@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Client Module Testing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
+    <script>
+      var navigation = 'http://localhost:3000/Navigation.js';
+      System.import(navigation).then(function (navComponent) {
+        navComponent.render({
+          elementId: 'navigation'
+        });
+
+        navComponent.on('DidIt', function(params) {
+          console.log('Something important happened and acknowledged from outside of the component. Clicked ' + params.timesClicked + ' times.');
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="navigation"></div>
+  </body>
+</html>
